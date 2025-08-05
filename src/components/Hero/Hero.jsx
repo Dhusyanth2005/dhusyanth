@@ -97,7 +97,7 @@ const Hero = () => {
 
         <div ref={imageRef} className={styles.profileImage}>
           <div className={styles.imageContainer}>
-            <img src="/src/assets/images/dhusyanth.jpg" alt="John Doe" />
+            <img src="/images/dhusyanth.jpg" alt="John Doe" />
           </div>
           <div className={styles.imageBackground}></div>
           <div className={styles.imageGlow}></div>
