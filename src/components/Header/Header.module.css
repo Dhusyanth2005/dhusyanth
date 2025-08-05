@@ -1,0 +1,233 @@
+/* src/components/Header/Header.module.css */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: var(--transition-normal);
+  z-index: 1000;
+  padding: var(--spacing-md) 0;
+}
+
+.scrolled {
+  background-color: rgba(23, 28, 25, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 168, 107, 0.15);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid rgba(127, 255, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: var(--color-accent);
+  margin-right: var(--spacing-sm);
+  font-family: var(--font-code);
+  text-shadow: 0 0 8px var(--color-accent-glow);
+}
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin-left: var(--spacing-xl);
+}
+
+.navItem a {
+  color: var(--color-text);
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition-normal);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  letter-spacing: 0.5px;
+}
+
+.navItem a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: var(--transition-normal);
+  box-shadow: 0 0 6px var(--color-accent-glow);
+  border-radius: var(--radius-full);
+}
+
+.navItem a:hover {
+  color: var(--color-accent);
+}
+
+.navItem a:hover::after {
+  width: 100%;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  z-index: 1001;
+  outline: none;
+  position: relative;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton:hover {
+  background-color: rgba(127, 255, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.menuButton:focus {
+  outline: 2px solid rgba(127, 255, 0, 0.4);
+  outline-offset: 2px;
+}
+
+.menuButton:active {
+  transform: scale(0.95);
+}
+
+.menuIcon {
+  color: var(--color-accent);
+  transition: var(--transition-fast);
+  filter: drop-shadow(0 0 4px var(--color-accent-glow));
+}
+
+.menuButton:hover .menuIcon {
+  transform: rotate(90deg);
+}
+
+/* Remove the old hamburger styles */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: rgba(31, 42, 36, 0.98);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    transition: var(--transition-cubic);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(127, 255, 0, 0.1);
+  }
+
+  .nav.open {
+    transform: translateX(0);
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+
+  .navItem {
+    margin: 0;
+    width: 80%;
+    text-align: center;
+  }
+
+  .navItem a {
+    display: block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.1rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+    border: 1px solid transparent;
+  }
+
+  .navItem a:hover {
+    background-color: rgba(127, 255, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(127, 255, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(127, 255, 0, 0.1);
+  }
+
+  .navItem a::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .nav {
+    width: 85%;
+  }
+
+  .navItem {
+    width: 90%;
+  }
+
+  .navItem a {
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

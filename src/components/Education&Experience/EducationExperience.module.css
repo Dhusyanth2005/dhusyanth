@@ -1,0 +1,314 @@
+/* EducationExperience.module.css */
+.educationExperience {
+  background-color: var(--color-bg);
+  position: relative;
+  padding: var(--spacing-xl) 0;
+}
+
+.timelineContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timelineSection {
+  position: relative;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.sectionHeader svg {
+  color: var(--color-accent);
+}
+
+.sectionHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timelineItem {
+  display: flex;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.timelineMarker {
+  position: relative;
+  margin-right: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.markerDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-accent);
+  z-index: 2;
+  position: relative;
+}
+
+.markerLine {
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(180deg, var(--color-accent), rgba(255, 255, 255, 0.1));
+  margin-top: var(--spacing-sm);
+  flex-grow: 1;
+}
+
+.timelineContent {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.timelineContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-alt));
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.timelineContent:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.timelineContent:hover::before {
+  opacity: 1;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.itemTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.itemCompany,
+.itemInstitution {
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.certificateBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.certificateBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.gradeBadge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.itemMeta {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.itemPeriod,
+.itemLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.statusBadge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge.current {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.statusBadge.completed {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.itemDescription {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.techTag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.techTag:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Experience specific styling */
+.experienceItem .timelineContent {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+}
+
+.experienceItem .markerDot {
+  background: linear-gradient(135deg, #ffd700, #ff6b35);
+  box-shadow: 0 0 0 2px #ffd700;
+}
+
+.experienceItem .timelineContent::before {
+  background: linear-gradient(180deg, #ffd700, #ff6b35);
+}
+
+/* Education specific styling */
+.educationItem .timelineContent {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+}
+
+.educationItem .markerDot {
+  background: linear-gradient(135deg, #6495ed, #4169e1);
+  box-shadow: 0 0 0 2px #6495ed;
+}
+
+.educationItem .timelineContent::before {
+  background: linear-gradient(180deg, #6495ed, #4169e1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .timelineContainer {
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .timelineContainer {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xxl);
+  }
+  
+  .contentHeader {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .certificateBtn,
+  .gradeBadge {
+    align-self: flex-start;
+  }
+  
+  .itemMeta {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineItem {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .timelineMarker {
+    margin-right: var(--spacing-md);
+  }
+  
+  .timelineContent {
+    padding: var(--spacing-md);
+  }
+  
+  .markerLine {
+    height: 80px;
+  }
+  
+  .technologies {
+    gap: var(--spacing-xs);
+  }
+  
+  .techTag {
+    font-size: 0.75rem;
+  }
+}
