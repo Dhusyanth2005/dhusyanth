@@ -50,6 +50,38 @@ const Header = () => {
     };
   }, [menuOpen]);
 
+  // Smooth scrolling for internal links
+  useEffect(() => {
+    const handleSmoothScroll = (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const href = link.getAttribute('href');
+      if (href === '#' || href === '#0') return; // Skip empty anchors
+
+      e.preventDefault();
+      const targetId = href;
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+
+      // Close mobile menu after click
+      if (menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleSmoothScroll);
+
+    return () => {
+      document.removeEventListener('click', handleSmoothScroll);
+    };
+  }, [menuOpen]); // Re-attach if menu state changes (safe)
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };

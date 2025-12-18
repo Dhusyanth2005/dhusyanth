@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import styles from './Projects.module.css';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('web');
   
   const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'web', label: 'Web Applications' },
-    { id: 'mobile', label: 'Mobile Apps' }
+    // { id: 'all', label: 'All Projects' },
+    { id: 'web', label: 'Web Applications' }
+    // { id: 'mobile', label: 'Mobile Apps' }
     // { id: 'api', label: 'API & Backend' }
   ];
   

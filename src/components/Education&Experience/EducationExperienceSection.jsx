@@ -1,9 +1,27 @@
+// src/components/EducationExperience/EducationExperience.jsx
 import React from 'react';
-import { Calendar, MapPin, Award, GraduationCap, Briefcase, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Award, GraduationCap, Briefcase } from 'lucide-react';
 import styles from './EducationExperience.module.css';
 
 const EducationExperience = () => {
   const experienceData = [
+    // New internship - placed first (most recent)
+    {
+      id: 2,
+      title: 'Full Stack Developer Intern',
+      company: 'Code Kadai Solutions',
+      location: 'Remote', // Assuming remote based on common internships; change if needed
+      period: '2025',
+      type: 'Internship',
+      description: 'Completed a 6-month internship in full-stack development. Worked in a collaborative environment using Git/GitHub, managing branches, pull requests, and code reviews. Built and deployed scalable applications, contributing to frontend features, backend APIs, database operations, and authentication systems following industry best practices.',
+      technologies: [
+        'React', 'TypeScript', 'Redux Toolkit', 'TanStack Query', 
+        'WebSocket', 'Leaflet Map', 'Node.js', 'Express', 
+        'PostgreSQL', 'Prisma'
+      ],
+      certificate: false // Enables "View Certificate" button
+    },
+    // Existing internship
     {
       id: 1,
       title: 'MERN Stack Internship',
@@ -13,11 +31,12 @@ const EducationExperience = () => {
       type: 'Internship',
       description: 'Completed a hands-on internship in full-stack development using MongoDB, Express.js, React, and Node.js. Built a dynamic social media application that enables users to create, like, comment on, and delete posts. Integrated Cloudinary for image storage and implemented user authentication, enhancing user engagement with an interactive content-sharing experience.',
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST API'],
-      certificate: true
+      certificate: false
     }
   ];
 
   const educationData = [
+    // Education remains unchanged
     {
       id: 1,
       degree: 'B.Tech (Information Technology)',
@@ -45,7 +64,7 @@ const EducationExperience = () => {
       status: 'Completed',
       description: 'Completed secondary education with strong foundation in core subjects.'
     }
-];
+  ];
 
   return (
     <section id="education" className={styles.educationExperience}>
@@ -109,7 +128,7 @@ const EducationExperience = () => {
             </div>
           </div>
 
-          {/* Education Section */}
+          {/* Education Section (unchanged) */}
           <div className={styles.timelineSection}>
             <div className={styles.sectionHeader}>
               <GraduationCap size={24} />

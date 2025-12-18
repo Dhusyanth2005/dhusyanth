@@ -49,7 +49,7 @@ const Hero = () => {
             <span className={styles.greeting}>Hello, I'm</span>
             <span className={styles.name}>Dhusyanth S</span>
             <div className={styles.roleWrapper}>
-              <span className={styles.role}>Full Stack Developer</span>
+              <span className={styles.role}>Software Developer</span>
               <span className={styles.cursor}></span>
             </div>
           </div>
@@ -105,7 +105,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className={styles.scrollDown} onClick={() => scrollToSection('about')}>
+      <div className={styles.scrollDown} onClick={() => scrollToSection('education')}>
         <div className={styles.mouse}>
           <div className={styles.wheel}></div>
         </div>

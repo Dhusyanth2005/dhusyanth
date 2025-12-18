@@ -5,14 +5,17 @@
   left: 0;
   width: 100%;
   background-color: transparent;
-  transition: var(--transition-normal);
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
   padding: var(--spacing-md) 0;
+  /* Use will-change for smoother transitions on scroll */
+  will-change: background-color, padding;
 }
 
 .scrolled {
   background-color: rgba(23, 28, 25, 0.92);
   backdrop-filter: blur(12px);
+  /* Improved shadow performance with GPU acceleration */
   box-shadow: 0 4px 20px rgba(0, 168, 107, 0.15);
   padding: var(--spacing-sm) 0;
   border-bottom: 1px solid rgba(127, 255, 0, 0.1);
@@ -64,10 +67,11 @@
   color: var(--color-text);
   font-weight: 500;
   position: relative;
-  transition: var(--transition-normal);
+  transition: color 0.3s ease;
   text-decoration: none;
   padding: var(--spacing-xs) var(--spacing-sm);
   letter-spacing: 0.5px;
+  display: inline-block;
 }
 
 .navItem a::after {
@@ -78,9 +82,11 @@
   width: 0;
   height: 2px;
   background-color: var(--color-accent);
-  transition: var(--transition-normal);
+  transition: width 0.3s ease;
   box-shadow: 0 0 6px var(--color-accent-glow);
   border-radius: var(--radius-full);
+  /* GPU acceleration for smooth animation */
+  will-change: width;
 }
 
 .navItem a:hover {
@@ -101,11 +107,13 @@
   outline: none;
   position: relative;
   border-radius: var(--radius-sm);
-  transition: var(--transition-normal);
+  transition: background-color 0.2s ease, transform 0.2s ease;
   min-width: 44px;
   min-height: 44px;
   align-items: center;
   justify-content: center;
+  /* Prevent layout shifts */
+  flex-shrink: 0;
 }
 
 .menuButton:hover {
@@ -124,19 +132,14 @@
 
 .menuIcon {
   color: var(--color-accent);
-  transition: var(--transition-fast);
+  transition: transform 0.2s ease;
   filter: drop-shadow(0 0 4px var(--color-accent-glow));
+  /* Ensure icon doesn't cause layout shift */
+  display: block;
 }
 
 .menuButton:hover .menuIcon {
   transform: rotate(90deg);
-}
-
-/* Remove the old hamburger styles */
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  display: none;
 }
 
 @media (max-width: 768px) {
@@ -159,20 +162,28 @@
     width: 80%;
     max-width: 320px;
     height: 100vh;
+    /* Fixed height prevents layout issues */
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
     background-color: rgba(31, 42, 36, 0.98);
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
     transform: translateX(100%);
-    transition: var(--transition-cubic);
+    /* Optimized transition - only transform for better performance */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(10px);
     border-left: 1px solid rgba(127, 255, 0, 0.1);
+    /* GPU acceleration */
+    will-change: transform;
+    /* Prevent content from being painted when hidden */
+    visibility: hidden;
   }
 
   .nav.open {
     transform: translateX(0);
+    visibility: visible;
   }
 
   .navList {
@@ -193,7 +204,7 @@
     padding: var(--spacing-md) var(--spacing-lg);
     font-size: 1.1rem;
     border-radius: var(--radius-md);
-    transition: var(--transition-normal);
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     border: 1px solid transparent;
   }
 

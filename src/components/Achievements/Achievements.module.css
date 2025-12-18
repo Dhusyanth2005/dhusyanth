@@ -161,6 +161,7 @@
   color: #6495ed;
 }
 
+/* Overlay Styles */
 .itemOverlay {
   position: absolute;
   top: 0;
@@ -186,6 +187,11 @@
 .overlayContent {
   text-align: center;
   padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .overlayIcon {
@@ -197,7 +203,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
   color: white;
-  margin: 0 auto var(--spacing-md);
+  margin: 0 auto var(--spacing-lg);
   transition: var(--transition-fast);
 }
 
@@ -206,17 +212,41 @@
 }
 
 .overlayTitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: white;
-  margin-bottom: var(--spacing-sm);
+  margin: 0 0 var(--spacing-sm);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .overlayInstitution {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
+  margin: 0 0 var(--spacing-xl);
+}
+
+/* View Certificate Button - Positioned at Bottom */
+.viewCertificate {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.viewCertificate:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Category specific styling */
@@ -228,8 +258,155 @@
   background: linear-gradient(135deg, #6495ed, #4169e1);
 }
 
-.itemCard[data-category="coding"] .itemIcon {
-  background: linear-gradient(135deg, #00d4aa, #00a085);
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--spacing-lg);
+  overflow: auto;
+}
+
+.modalContent {
+  position: relative;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(127, 255, 0, 0.2);
+  overflow: hidden;
+}
+
+.modalClose {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.modalClose:hover {
+  background: rgba(255, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.modalHeader {
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(127, 255, 0, 0.1), transparent);
+}
+
+.modalHeader h3 {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.modalHeader p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.currentCertLabel {
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-top: var(--spacing-xs);
+  font-size: 1.1rem;
+}
+
+.modalImageContainer {
+  position: relative;
+  padding: var(--spacing-lg);
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Carousel Navigation Arrows */
+.carouselPrev,
+.carouselNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: var(--radius-full);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.carouselPrev {
+  left: 10px;
+}
+
+.carouselNext {
+  right: 10px;
+}
+
+.carouselPrev:hover,
+.carouselNext:hover {
+  background: rgba(127, 255, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Carousel Dots */
+.carouselDots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.activeDot {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive Design */
@@ -270,6 +447,20 @@
   .itemDetails {
     flex-direction: column;
   }
+
+  .modalHeader h3 {
+    font-size: 1.3rem;
+  }
+  
+  .modalImageContainer {
+    padding: var(--spacing-md);
+  }
+
+  .carouselPrev,
+  .carouselNext {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -289,5 +480,14 @@
   .overlayIcon {
     width: 50px;
     height: 50px;
+  }
+
+  .overlayTitle {
+    font-size: 1.1rem;
+  }
+
+  .viewCertificate {
+    font-size: 0.95rem;
+    padding: var(--spacing-xs) var(--spacing-md);
   }
 }

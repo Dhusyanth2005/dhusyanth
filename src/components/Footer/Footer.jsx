@@ -7,7 +7,7 @@ const Footer = () => {
   
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/DhusyanthResume_New.pdf'; // Assuming your resume is named resume.pdf in public folder
+    link.href = '/Dhusyanth-2023IT.pdf'; // Assuming your resume is named resume.pdf in public folder
     link.download = 'Dhusyanth_Resume.pdf';
     link.click();
   };
