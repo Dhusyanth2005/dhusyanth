@@ -1,5 +1,4 @@
-// src/components/Hero/Hero.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Hero.module.css';
 
 const Hero = () => {
@@ -8,6 +7,27 @@ const Hero = () => {
   const bioRef = useRef(null);
   const buttonsRef = useRef(null);
   const socialsRef = useRef(null);
+  const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    // Typing effect
+    const text = 'Software Developer';
+    let currentIndex = 0;
+    
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setTypedText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        // Keep cursor blinking for a moment, then hide it
+        setTimeout(() => setShowCursor(false), 500);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, []);
 
   useEffect(() => {
     // Add animation classes after component mounts
@@ -49,15 +69,13 @@ const Hero = () => {
             <span className={styles.greeting}>Hello, I'm</span>
             <span className={styles.name}>Dhusyanth S</span>
             <div className={styles.roleWrapper}>
-              <span className={styles.role}>Software Developer</span>
-              <span className={styles.cursor}></span>
+              <span className={styles.role}>{typedText}</span>
+              {showCursor && <span className={styles.cursor}></span>}
             </div>
           </div>
           
           <p ref={bioRef} className={styles.bio}>
-            I craft modern web applications with a focus on clean code, 
-            exceptional user experiences, and scalable architecture. 
-            Passionate about solving complex problems through elegant solutions.
+           Building scalable web and mobile applications with clean architecture, performance-driven design, and maintainable code.
           </p>
 
           <div ref={buttonsRef} className={styles.ctaButtons}>

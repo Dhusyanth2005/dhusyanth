@@ -58,8 +58,8 @@ const CodingPlatforms = () => {
       id: 4,
       name: 'SkillRack',
       stats: [
-        { label: 'Problems Solved', value: '300+' },
-        { label: 'Rank', value: '91100' }
+        { label: 'Problems Solved', value: '600+' },
+        { label: 'Rank', value: '76151' }
       ],
       color: '#1E88E5',
       profileUrl: 'https://www.skillrack.com/faces/resume.xhtml?id=484623&key=783e543dddd777bcf3833166fc1164bed6d99d60', // ← Replace with your actual SkillRack profile link
